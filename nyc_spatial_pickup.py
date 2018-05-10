@@ -1,10 +1,11 @@
 import sys
 from pyspark.sql import SparkSession
+from pyspark import SparkContext
+
 import fiona
 import fiona.crs
 import shapely
 import rtree
-
 import pandas as pd
 import geopandas as gpd
 
@@ -50,7 +51,8 @@ if __name__ == '__main__':
     reload(sys)
     sys.setdefaultencoding('utf8')
 
-    session = SparkSession.builder.appName("NYC Spatial Pickup").getOrCreate()
+    sc = SparkContext()
+    spark = SparkSession(sc)
 
     # Read Shapefile
     shapefile = '/user/sliang003/geo_export_f3f1c046-b582-4f97-980f-48e4f9bcfb7f.shp'
