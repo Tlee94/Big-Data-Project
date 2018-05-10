@@ -55,7 +55,7 @@ if __name__ == '__main__':
     spark = SparkSession(sc)
 
     # Read Shapefile
-    shapefile = "/user/sliang003/geo.shp"
+    shapefile = "/user/sliang003/geo.geojson"
     boros = gpd.read_file(shapefile).to_crs(fiona.crs.from_epsg(2263))
 
     rdd = sc.textFile('/user/tlee000/2016_Green_Taxi_Trip_Data.csv')
